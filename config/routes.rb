@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   
-  resources :users
+  resources :users do
+    resources :relationships, only: [:create, :destroy]
+  end
+  
   get '/home/about', to: 'homes#about', as: 'about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
